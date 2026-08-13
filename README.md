@@ -1,5 +1,5 @@
 <h1 align="center">FOX</h1>
 
 <p align="center">
-  My own programming language & mini compiler built from scratch in C.
+  Building my own programming language and mini compiler from scratch in C, learning and improving it day by day.
 </p>
