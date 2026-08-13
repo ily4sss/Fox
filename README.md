@@ -1,7 +1,3 @@
-<p align="center">
-  <img src="./assets/Fox.svg" width="180">
-</p>
-
 <h1 align="center">FOX</h1>
 
 <p align="center">
