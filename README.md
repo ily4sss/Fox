@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/fox-logo.svg" width="120" />
+  <img src="assets/Fox.svg" width="120" />
 </p>
 
 <h1 align="center">FOX</h1>
