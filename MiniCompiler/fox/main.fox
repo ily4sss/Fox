@@ -1,0 +1,8 @@
+var int x = 1 + 5
+display>"Hello World"
+check_if (15 > 1)
+{
+    display>"16"
+}
+check_else
+    display>"16"
