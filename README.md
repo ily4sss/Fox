@@ -14,6 +14,10 @@ FOX started as a challenge between me and my friend to build our own programming
 
 Friend's GitHub: [@Yukari](https://github.com/Yukari-dev)
 
+<p align="center">
+  <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExdWpyNm5mMmdqaG45c2RjODdxcHF2ZTF5cWR3ZHAxM3lkanNvYjI1OCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/scZPhLqaVOM1qG4lT9/giphy.gif" width="350" />
+</p>
+
 ---
 
 ### About
