@@ -28,7 +28,7 @@ HELLO WORLD
 The simplest Fox program.
 
 <p align="center">
-  <img src="./assets/carbon/hello-world.png" width="720" alt="Fox Hello World">
+  <img src="./MiniCompiler/assets/carbon/hello-world.png" width="720">
 </p>
 
 display outputs a string.
@@ -38,7 +38,7 @@ VARIABLES
 Fox currently supports integer variable declarations and arithmetic expressions.
 
 <p align="center">
-  <img src="./assets/carbon/variables.png" width="720" alt="Fox variables">
+  <img src="./MiniCompiler/assets/carbon/variables.png" width="720">
 </p>
 
 Supported arithmetic operators:
@@ -52,7 +52,7 @@ CONDITIONS
 Conditions use check_if and check_else.
 
 <p align="center">
-  <img src="./assets/carbon/conditions.png" width="720" alt="Fox conditions">
+  <img src="./MiniCompiler/assets/carbon/conditions.png" width="720">
 </p>
 
 Supported comparison operators:
@@ -66,7 +66,7 @@ COMMENTS
 Comments are ignored by the lexer.
 
 <p align="center">
-  <img src="./assets/carbon/comments.png" width="720" alt="Fox comments">
+  <img src="./MiniCompiler/assets/carbon/comments.png" width="720">
 </p>
 
 Single-line comments start with $.
