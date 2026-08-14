@@ -4,10 +4,8 @@ type_token Tokenize_word(char *str, int *i)
     type_token id_token;
     int j = 0;
     int start = *i;
-    while ((str[start] >= 'a' && str[start] <= 'z')
-	|| (str[start] >= 'A' && str[start] <= 'Z')
-	|| str[start] == '_'
-	|| (str[start] >= '0' && str[start] <= '9'))
+    while (isalnum(str[start])
+	|| str[start] == '_')
         start++;
     j = start - *i;
     char *id_str = malloc(j + 1);
@@ -18,10 +16,8 @@ type_token Tokenize_word(char *str, int *i)
         return id_token;
     }
     j = 0;
-    while ((str[*i] >= 'a' && str[*i] <= 'z')
-	|| (str[*i] >= 'A' && str[*i] <= 'Z')
-	|| str[*i] == '_'
-	|| (str[*i] >= '0' && str[*i] <= '9'))
+    while (isalnum(str[*i])
+	|| str[*i] == '_')
     {
 	    id_str[j++] = str[*i];
 	    (*i)++;
@@ -177,19 +173,17 @@ type_token *Tokenize(char *str, long size)
         return NULL;
     while (str[i])
     {
-        if (str[i] == ' '|| str[i] == '\t')
+        if (str[i] == '\n')
+        {
+            line++;
+            column = 1;
+            i++;
+        }
+        else if (isspace(str[i]))
             Skip_Space(str, &i);
-        else if (str[i] == '\n')
-	    {
-		    line++;
-		    column = 1;
-		    i++;
-	    }
-        else if (str[i] >= '0' && str[i] <= '9')
+        else if (isdigit(str[i]))
             tokens[t++] = Tokenize_str_num(str, &i);
-        else if ((str[i] >= 'a' && str[i] <= 'z')
-		|| (str[i] >= 'A' && str[i] <= 'Z')
-		|| str[i] == '_')
+        else if (isalpha(str[i]) || str[i] == '_')
 		    tokens[t++] = Tokenize_word(str, &i);
         else if(str[i] == '=' || str[i] == '+'
 	    || str[i] == '-' || str[i] == '*'
@@ -201,7 +195,7 @@ type_token *Tokenize(char *str, long size)
 	    || str[i] == '[' || str[i] == ']')
 		    tokens[t++] = Tokenize_op(str, &i);
         else if(str[i] == '"')
-            tokens[t++] = Tokenize_str(str, &i);
+            tokens[t++] = Tokenize_str(str, &i); 
         else
         {
             tokens[t].type = TOKEN_ERROR;
