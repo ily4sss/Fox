@@ -28,7 +28,7 @@ HELLO WORLD
 The simplest Fox program.
 
 <p align="center">
-  <img src="./assets/carbon/hello-world.png" width="720" alt="Fox hello world">
+  <img src="./assets/carbon/hello-world.png" width="720" alt="Fox Hello World">
 </p>
 
 display outputs a string.
