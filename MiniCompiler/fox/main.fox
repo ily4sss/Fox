@@ -1,8 +1,70 @@
-var int x = 1 + 5
-display>"Hello World"
-check_if (15 > 1)
+$ Fox parser full test
+
+var int x = 10
+var int y = 2 + 3 * 4
+var int z = 20 / 2 - 3
+
+display>"FOX Compiler (wlah)"
+
+$test nested chech_if
+
+check_if (1)
 {
-    display>"16"
+	display>"outer"
+
+	check_if (1)
+	{
+		display>"nested"
+		var int x = 42
+	}
+	display>"an_outer"
+}
+check_if (10 > 5)
+{
+	display>"GREATER"
+	var int a = 1 + 4 * 5
+	display>"Mult-statements"
 }
 check_else
-    display>"16"
+{
+	display>"ELSE"
+	var int b = 15
+}
+
+check_if (5 < 10)
+{
+	display>"LESS"
+}
+
+check_if (10 >= 10)
+{
+	display>"GREATER EQUAL"
+}
+
+check_if (5 <= 10)
+{
+	display>"LESS EQUAL"
+}
+
+check_if (10 == 10)
+{
+	display>"EQUAL"
+}
+
+check_if (10 != 5)
+{
+	display>"NOT EQUAL"
+}
+
+
+$ single line comment test
+
+$-
+multline comments test
+3awed
+baraka
+-$
+
+var int math = 1 + 4 * 5 - 8 / 2
+
+display>"FOX finito 🥀💔"

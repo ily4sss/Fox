@@ -121,6 +121,12 @@ type_token	Tokenize_op(char *str, int *i)
 		token.type = TOKEN_LBRACKET;
 	else if (strcmp(opr, "]") == 0)
 		token.type = TOKEN_RBRACKET;
+    else if (strcmp(opr, "$") == 0)
+		token.type = TOKEN_LINE_CMNT;
+    else if (strcmp(opr, "$-") == 0)
+		token.type = TOKEN_F_CMNT;
+    else if (strcmp(opr, "-$") == 0)
+		token.type = TOKEN_L_CMNT;
 	else
 		token.type = TOKEN_ERROR;
 	token.str_value = opr;
@@ -160,7 +166,6 @@ type_token Tokenize_str(char *str, int *i)
     token.str_value = phrase;
     return token;
 }
-
 type_token *Tokenize(char *str, long size)
 {
     int t = 0;
@@ -196,6 +201,22 @@ type_token *Tokenize(char *str, long size)
 		    tokens[t++] = Tokenize_op(str, &i);
         else if(str[i] == '"')
             tokens[t++] = Tokenize_str(str, &i); 
+        else if(str[i] == '$' && str[i + 1] == '-')
+        {
+            i += 2;
+            while (str[i]
+	        && !(str[i] == '-' && str[i + 1] == '$'))
+                i++;
+            if (str[i])
+                i += 2;
+        }
+        else if (str[i] == '$')
+        {
+            while (str[i] && str[i] != '\n')
+                i++;
+            if (str[i] == '\n')
+                i++;
+        }
         else
         {
             tokens[t].type = TOKEN_ERROR;

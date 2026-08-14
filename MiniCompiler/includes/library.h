@@ -36,6 +36,9 @@ typedef enum enum_type_token
     TOKEN_CHECK_IF,
     TOKEN_CHECK_ELSE,
     TOKEN_TEND,
+    TOKEN_LINE_CMNT,
+    TOKEN_F_CMNT,
+    TOKEN_L_CMNT,
     TOKEN_COMMA
 } e_type_token;
 typedef struct s_type_token
@@ -93,21 +96,36 @@ typedef enum e_stat_type
 {
 	STMT_VAR,
 	STMT_DISPLAY,
-	STMT_IF
+	STMT_IF,
+    STMT_ELSE,
+    STMT_ERR_ELSE,
+    STMT_F_CMNT,
+    STMT_L_CMNT,
+    STMT_LINE_CMNT
 }	stat_type;
 
 typedef struct s_stat
 {
 	stat_type		type;
-	void				*data;
+	void			*data;
+    struct s_stat            *next;
 }	stat;
+
+typedef struct s_cmnt
+{
+    enum e_stat_type cmnt;
+} cmnt;
 
 typedef struct f_if_ast
 {
     node_ast *if_node;
     stat      *body_stat;
 } if_ast;
-
+stat *parse_program(type_token *token);
+if_ast *parse_else(type_token *token, int *i);
+if_ast *parse_if(type_token *token, int *i);
+display_ast *parse_display(type_token *token, int *i);
+var_ast *parse_var(type_token *token, int *i);
 node_ast *cr_num(int value);
 node_ast *cr_add(node_ast *left, node_ast *right);
 node_ast *cr_minus(node_ast *left, node_ast *right);
@@ -119,4 +137,8 @@ node_ast *parse_expr(type_token *token, int *i);
 node_ast *parse_condition(type_token *token, int *i);
 //----------------------------------------------
 
+//--------------------------main----------------
+void	print_ast(node_ast *node, int depth);
+void	print_program(stat *program);
+//----------------------------------------------
 #endif

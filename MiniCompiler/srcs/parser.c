@@ -36,7 +36,7 @@ var_ast *parse_var(type_token *token, int *i)
     {
         free(var);
         return NULL;
-    }
+    };
     return var;
 }
 
@@ -109,17 +109,41 @@ if_ast *parse_if(type_token *token, int *i)
         return NULL;
     }
     (*i)++;
+    stat *first = NULL;
+    stat *last = NULL;
     while (token[*i].type != TOKEN_RBRACE
     && token[*i].type != TOKEN_TEND
     && token[*i].type != TOKEN_ERROR)
-    {
+    {        
         stat *new_stat = malloc(sizeof(stat));
         if (new_stat == NULL)
         {
             free(if_stat);
-	        return (NULL);
+	        return NULL;
         }
-        if (token[*i].type == TOKEN_DISPLAY)
+        if (token[*i].type == TOKEN_CHECK_IF)
+        {
+            new_stat->type = STMT_IF;
+            new_stat->data = parse_if(token, i);
+            if (new_stat->data == NULL)
+            {
+                free(new_stat);
+                free(if_stat);
+                return (NULL);
+            }
+        }
+        else if(token[*i].type == TOKEN_CHECK_ELSE)
+        {
+            new_stat->type = STMT_ELSE;
+            new_stat->data = parse_else(token, i);
+            if (new_stat->data == NULL)
+            {
+                free(new_stat);
+                free(if_stat);
+                return (NULL);
+            }
+        }
+        else if (token[*i].type == TOKEN_DISPLAY)
         {
             new_stat->type = STMT_DISPLAY;
             new_stat->data = parse_display(token, i);
@@ -147,8 +171,19 @@ if_ast *parse_if(type_token *token, int *i)
             free(new_stat);
             return NULL;
         }
-        if_stat->body_stat = new_stat;
+        new_stat->next = NULL;
+        if (first == NULL)
+        {
+            first = new_stat;
+            last = new_stat;
+        }
+        else
+        {
+            last->next = new_stat;
+	        last = new_stat;
+        }
     }
+    if_stat->body_stat = first;
     if (token[*i].type != TOKEN_RBRACE)
     {
         free(if_stat);
@@ -176,17 +211,41 @@ if_ast *parse_else(type_token *token, int *i)
         return NULL;
     }
     (*i)++;
+    stat *first = NULL;
+    stat *last = NULL;
     while (token[*i].type != TOKEN_RBRACE
     && token[*i].type != TOKEN_TEND
     && token[*i].type != TOKEN_ERROR)
     {
-        stat *new_stat = malloc(sizeof(stat));
+        stat *new_stat = malloc(sizeof(*new_stat));
         if (new_stat == NULL)
         {
             free(else_stat);
 	        return (NULL);
         }
-        if (token[*i].type == TOKEN_DISPLAY)
+        if (token[*i].type == TOKEN_CHECK_IF)
+        {
+            new_stat->type = STMT_IF;
+            new_stat->data = parse_if(token, i);
+            if (new_stat->data == NULL)
+            {
+                free(new_stat);
+                free(else_stat);
+                return (NULL);
+            }
+        }
+        else if(token[*i].type == TOKEN_CHECK_ELSE)
+        {
+            new_stat->type = STMT_ELSE;
+            new_stat->data = parse_else(token, i);
+            if (new_stat->data == NULL)
+            {
+                free(new_stat);
+                free(else_stat);
+                return (NULL);
+            }
+        }
+        else if (token[*i].type == TOKEN_DISPLAY)
         {
             new_stat->type = STMT_DISPLAY;
             new_stat->data = parse_display(token, i);
@@ -214,8 +273,19 @@ if_ast *parse_else(type_token *token, int *i)
             free(new_stat);
             return NULL;
         }
-        else_stat->body_stat = new_stat;
+        new_stat->next = NULL;
+        if (first == NULL)
+        {
+            first = new_stat;
+            last = new_stat;
+        }
+        else
+        {
+            last->next = new_stat;
+	        last = new_stat;
+        }
     }
+    else_stat->body_stat = first;
     if (token[*i].type != TOKEN_RBRACE)
     {
         free(else_stat);
