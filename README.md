@@ -1,128 +1,106 @@
-<div align="center">
+<div align="left">
 
-FOX
+# FOX
 
-A small programming language and compiler built from scratch in C
+**A small programming language and compiler written from scratch in C.**
 
-<img src="https://img.shields.io/badge/C-111827?style=flat-square&logo=c&logoColor=white">
-<img src="https://img.shields.io/badge/.fox-7f1d1d?style=flat-square">
-<img src="https://img.shields.io/badge/compiler-front--end-991b1b?style=flat-square">
-<img src="https://img.shields.io/badge/status-in%20development-1f2937?style=flat-square">
-
-<br><br>
-
-source → lexer → tokens → parser → AST
+![C](https://img.shields.io/badge/language-C-8b0000?style=flat-square&labelColor=0d0d0d)
+![Status](https://img.shields.io/badge/status-in--development-8b0000?style=flat-square&labelColor=0d0d0d)
+![Made from scratch](https://img.shields.io/badge/built-from%20scratch-8b0000?style=flat-square&labelColor=0d0d0d)
 
 </div>
 
-ABOUT
+---
 
-Fox is a small programming language I am building to understand how compilers work internally.
+FOX started as a challenge between me and my friend to build our own programming languages and compilers from scratch.
 
-The current version focuses on the compiler front-end: lexical analysis, parsing, expressions, conditions, blocks and AST construction.
+Friend's GitHub: [@friend](https://github.com/FRIEND_USERNAME)
 
-The goal is to eventually turn .fox source code into C and compile it into an executable.
+---
 
-HELLO WORLD
+### About
 
-The simplest Fox program.
+FOX is a custom-built language with its own lexer, parser, and AST, compiled entirely in C. Every feature — from tokenization to control flow — is implemented from the ground up.
 
-<p align="center">
-  <img src="./MiniCompiler/assets/carbon/hello-world.png" width="720">
-</p>
+---
 
-display outputs a string.
+### Hello World
 
-VARIABLES
+```
+display>"Hello World"
+```
 
-Fox currently supports integer variable declarations and arithmetic expressions.
+<img src="./MiniCompiler/assets/carbon/hello-world.png" width="480">
 
-<p align="center">
-  <img src="./MiniCompiler/assets/carbon/variables.png" width="720">
-</p>
+---
 
-Supported arithmetic operators:
+### Variables
 
-+ - * /
+```
+var int x = 10
+```
 
-Operator precedence is handled by the parser.
+<img src="./MiniCompiler/assets/carbon/variables.png" width="480">
 
-CONDITIONS
+---
 
-Conditions use check_if and check_else.
+### Conditions
 
-<p align="center">
-  <img src="./MiniCompiler/assets/carbon/conditions.png" width="720">
-</p>
-
-Supported comparison operators:
-
-> < >= <= == !=
-
-Nested check_if blocks and multiple statements inside blocks are supported.
-
-COMMENTS
-
-Comments are ignored by the lexer.
-
-<p align="center">
-  <img src="./MiniCompiler/assets/carbon/comments.png" width="720">
-</p>
-
-Single-line comments start with $.
-
-Multi-line comments use $- and -$.
-
-CURRENT FEATURES
-
-Lexer and tokenization
-
-Integer variable declarations
-
-Arithmetic expressions
-
-Operator precedence
-
-Comparison expressions
-
-display
-
-check_if
-
+```
+check_if (10 > 5)
+{
+    display>"true"
+}
 check_else
+{
+    display>"false"
+}
+```
 
-Nested check_if
+<img src="./MiniCompiler/assets/carbon/conditions.png" width="480">
 
-Multiple statements inside blocks
+---
 
-Single-line comments
+### Comments
 
-Multi-line comments
+```
+$ single-line comment
 
-AST construction
+$-
+multi-line
+comment
+-$
+```
 
-PIPELINE
+<img src="./MiniCompiler/assets/carbon/comments.png" width="480">
 
-FOX Source
-    ↓
-Lexer
-    ↓
-Tokens
-    ↓
-Parser
-    ↓
-AST
-    ↓
-Semantic Analysis
-    ↓
-C Code Generation
-    ↓
-Executable
+---
 
-The lexer, parser and AST stages are the current focus.
+### Supported Features
 
-<div align="center">
+- Lexer
+- Tokenization
+- AST
+- `int` variables
+- `+  -  *  /`
+- Operator precedence
+- `>  <  >=  <=  ==  !=`
+- `display`
+- `check_if`
+- `check_else`
+- Nested `check_if`
+- Multiple statements inside blocks
+- Single-line comments
+- Multi-line comments
 
-Built to understand what happens between source code and an executable.
+---
+
+
+
+---
+
+<div align="left">
+
+**FOX** — built from scratch, one token at a time.
 
 </div>
