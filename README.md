@@ -1,12 +1,10 @@
 <div align="left">
 
-# FOX
+# FOX.fox
 
 **A small programming language and compiler written from scratch in C.**
 
-![C](https://img.shields.io/badge/language-C-8b0000?style=flat-square&labelColor=0d0d0d)
-![Status](https://img.shields.io/badge/status-in--development-8b0000?style=flat-square&labelColor=0d0d0d)
-![Made from scratch](https://img.shields.io/badge/built-from%20scratch-8b0000?style=flat-square&labelColor=0d0d0d)
+<img src="https://skillicons.dev/icons?i=c" height="34" />
 
 </div>
 
@@ -14,21 +12,19 @@
 
 FOX started as a challenge between me and my friend to build our own programming languages and compilers from scratch.
 
-Friend's GitHub: [@friend](https://github.com/FRIEND_USERNAME)
+Friend's GitHub: [@Yukari](https://github.com/Yukari-dev)
 
 ---
 
 ### About
 
-FOX is a custom-built language with its own lexer, parser, and AST, compiled entirely in C. Every feature — from tokenization to control flow — is implemented from the ground up.
+FOX is a custom-built language with its own lexer, parser, and AST, compiled entirely in C.
+
+Every feature, from tokenization to control flow, is implemented from the ground up.
 
 ---
 
 ### Hello World
-
-```
-display>"Hello World"
-```
 
 <img src="./MiniCompiler/assets/carbon/hello-world.png" width="480">
 
@@ -36,41 +32,17 @@ display>"Hello World"
 
 ### Variables
 
-```
-var int x = 10
-```
-
 <img src="./MiniCompiler/assets/carbon/variables.png" width="480">
 
 ---
 
 ### Conditions
 
-```
-check_if (10 > 5)
-{
-    display>"true"
-}
-check_else
-{
-    display>"false"
-}
-```
-
 <img src="./MiniCompiler/assets/carbon/conditions.png" width="480">
 
 ---
 
 ### Comments
-
-```
-$ single-line comment
-
-$-
-multi-line
-comment
--$
-```
 
 <img src="./MiniCompiler/assets/carbon/comments.png" width="480">
 
@@ -95,12 +67,12 @@ comment
 
 ---
 
-
+**FOX** is just getting started. I’m building it step by step, adding new features as I learn more about how compilers work under the hood.
 
 ---
 
-<div align="left">
+## License
 
-**FOX** — built from scratch, one token at a time.
+FOX is released under the MIT License.
 
-</div>
+You’re free to use, modify, and share the project. See the [LICENSE](./LICENSE) file for details.
